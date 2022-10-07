@@ -1,5 +1,8 @@
 import { useState,useEffect } from "react"
-import { useParams } from "react-router-dom" 
+import { useParams, Link } from "react-router-dom" 
+import NavBar from "../components/NavBar"
+
+
 
 const Detailpage = (props) => {
     const [artikel, setArtikel] = useState({})
@@ -12,9 +15,15 @@ const Detailpage = (props) => {
         .then(data => setArtikel(data.find(item => item.id == params.id)))
     },[]) 
 
+    const deletIt = () => {
+        
+    }
+
     return (
 
         <div>
+            <NavBar />
+            
             <header>
                 <img src={`http://localhost:1989/${artikel.bild_url}`} alt="" />
             </header>
@@ -27,6 +36,7 @@ const Detailpage = (props) => {
                     <p>{artikel.text}</p>
                 </section>
             </main>
+            <button onClick={deletIt}></button>
 
         </div>
     )
